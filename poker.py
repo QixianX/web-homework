@@ -161,9 +161,9 @@ def judge(black_list, white_list):
 
     # 铁支大小
     if btz_flag == 1 and wtz_flag == 1:
-        if get_keys(blnu_com ,4 ) > get_keys(whnu_com ,4):
+        if get_keys(blnu_com, 4) > get_keys(whnu_com, 4):
             return "Black Wins"
-        elif get_keys(blnu_com ,4 ) == get_keys(whnu_com ,4):
+        elif get_keys(blnu_com, 4) == get_keys(whnu_com, 4):
             return "Tie"
         else:
             return "White Wins"
@@ -171,28 +171,29 @@ def judge(black_list, white_list):
     # 三条 葫芦大小 都只看三条
     if bst_flag == 1 and wst_flag == 1:
         #if bdz_flag == 1 and wdz_flag == 1:
-        if get_keys(blnu_com ,3) > get_keys(whnu_com ,3):
+        if get_keys(blnu_com, 3) > get_keys(whnu_com, 3):
             return "Black Wins"
-        elif get_keys(blnu_com ,3) == get_keys(whnu_com ,3):
+        elif get_keys(blnu_com, 3) == get_keys(whnu_com, 3):
             return "Tie"
         else:
             return "White Win"
 
-    # 对子 两对 大小
+    # 对子 大小
     if bdz_flag  == 1 and wdz_flag == 1 and wst_flag != 1 and bst_flag != 1:
-        if get_keys(blnu_com ,2) > get_keys(whnu_com ,2):
+        if get_keys(blnu_com, 2) > get_keys(whnu_com, 2):
             return "Black Wins"
-        elif get_keys(blnu_com ,2) == get_keys(whnu_com ,2):
+        elif get_keys(blnu_com, 2) == get_keys(whnu_com, 2):
             return "Tie"
         else:
             return "White Win"
+    # 两对 大小       
     if bld_flag == 1 and wld_flag == 1:
-        if get_keys(blnu_com ,2)[0] > get_keys(whnu_com ,2)[0]:
+        if get_keys(blnu_com, 2)[1] > get_keys(whnu_com, 2)[1]:
             return "Black Wins"
-        elif get_keys(blnu_com ,2)[0] == get_keys(whnu_com ,2)[0]:
-            if get_keys(blnu_com ,2)[1] > get_keys(whnu_com ,2)[1]:
+        elif get_keys(blnu_com, 2)[1] == get_keys(whnu_com, 2)[1]:
+            if get_keys(blnu_com, 2)[0] > get_keys(whnu_com, 2)[0]:
                 return "Black Wins"
-            elif get_keys(blnu_com ,2)[1] == get_keys(whnu_com ,2)[1]:
+            elif get_keys(blnu_com, 2)[0] == get_keys(whnu_com, 2)[0]:
                 return "Tie"
             else: return "White Wins"
         else: return "White Wins"
@@ -210,8 +211,36 @@ def judge(black_list, white_list):
             return "Black Wins"
         if btz_flag != 1 and wtz_flag == 1:
             return "White Wins"
-    # 葫芦与其他
-
+        if btz_flag != 1 and wtz_flag != 1:
+                if bhl_flag == 1 and whl_flag != 1:
+                    return "Black Wins"
+                if bhl_flag != 1 and whl_flag == 1:
+                    return "White Wins"
+                if bhl_flag != 1 and whl_flag != 1:
+                    if bth_flag == 1 and wth_flag != 1:
+                        return "Black Wins"
+                    if bth_flag != 1 and wth_flag == 1:
+                        return "White Wins"
+                    if bth_flag != 1 and wth_flag != 1:
+                        if bsz_flag == 1 and wsz_flag != 1:
+                            return "Black Wins"
+                        if bsz_flag != 1 and wsz_flag == 1:
+                            return "White Wins"
+                        if bsz_flag != 1 and wsz_flag != 1:
+                            if bst_flag == 1 and wst_flag != 1:
+                                return "Black Wins"
+                            if bst_flag != 1 and wst_flag == 1:
+                                return "White Wins"
+                            if bst_flag != 1 and wst_flag != 1:
+                                if bld_flag == 1 and wld_flag != 1:
+                                    return "Black Wins" 
+                                if bld_flag != 1 and wld_flag == 1:
+                                    return "White Wins" 
+                                if bld_flag != 1 and wld_flag != 1:
+                                    if bdz_flag == 1 and wdz_flag != 1:
+                                        return "Black Wins"
+                                    if bdz_flag != 1 and wdz_flag == 1:
+                                        return "White Wins"
 
 # 获取key
 def get_keys(count, value):
